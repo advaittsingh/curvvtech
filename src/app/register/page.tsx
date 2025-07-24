@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useAuth } from '@/hooks/use-auth';
-import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function RegisterPage() {
-  const router = useRouter();
-  const { register, loading } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,23 +15,30 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { register } = useAuth();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
 
     if (!name || !email || !password || !confirmPassword) {
       setError('Please fill in all fields');
+      setIsLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
+      setIsLoading(false);
       return;
     }
 
     if (password.length < 6) {
       setError('Password must be at least 6 characters long');
+      setIsLoading(false);
       return;
     }
 
@@ -41,6 +47,8 @@ export default function RegisterPage() {
       router.push('/');
     } catch (err) {
       setError('Registration failed. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,8 +56,14 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">C</span>
+          <div className="relative w-12 h-12">
+            <Image
+              src="/logo.png"
+              alt="CurvvTech Logo"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
           </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
@@ -218,10 +232,10 @@ export default function RegisterPage() {
             <div>
               <button
                 type="submit"
-                disabled={loading}
+                disabled={isLoading}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? (
+                {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                     Creating account...
@@ -292,7 +306,12 @@ export default function RegisterPage() {
           href="/"
           className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900"
         >
-          <ArrowLeft className="h-4 w-4 mr-1" />
+          <svg className="h-4 w-4 mr-1" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            />
+          </svg>
           Back to home
         </Link>
       </div>

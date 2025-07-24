@@ -43,12 +43,40 @@ export default function ServiceCheckoutPage() {
     e.preventDefault();
     setIsProcessing(true);
 
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Save booking to backend
+      const bookingData = {
+        userEmail: user?.email || contactInfo.email,
+        serviceId: booking?.service.id || '',
+        serviceTitle: booking?.service.title || '',
+        date: booking?.date || '',
+        time: booking?.time || '',
+        requirements: booking?.requirements || '',
+        contactInfo: contactInfo,
+        total: booking?.service.price || 0
+      };
 
-    // Clear booking and redirect to confirmation
-    clearBooking();
-    router.push('/service-confirmation');
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save booking');
+      }
+
+      // Clear booking and redirect to confirmation
+      clearBooking();
+      router.push('/service-confirmation');
+    } catch (error) {
+      console.error('Error processing booking:', error);
+      alert('There was an error processing your booking. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const tax = booking.service.price * 0.08;

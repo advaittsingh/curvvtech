@@ -43,12 +43,37 @@ export default function CheckoutPage() {
     e.preventDefault();
     setIsProcessing(true);
 
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Save order to backend
+      const orderData = {
+        userEmail: user?.email || shippingInfo.email,
+        items: items,
+        total: finalTotal,
+        shippingInfo: shippingInfo,
+        paymentMethod: 'Credit Card' // You can make this dynamic
+      };
 
-    // Clear cart and redirect to confirmation
-    clearCart();
-    router.push('/order-confirmation');
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save order');
+      }
+
+      // Clear cart and redirect to confirmation
+      clearCart();
+      router.push('/order-confirmation');
+    } catch (error) {
+      console.error('Error processing order:', error);
+      alert('There was an error processing your order. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const tax = total * 0.08;

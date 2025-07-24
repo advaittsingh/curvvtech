@@ -6,12 +6,19 @@ import { Footer } from "@/components/footer";
 import { AuthProvider } from "@/hooks/use-auth";
 import { CartProvider } from "@/hooks/use-cart";
 import { BookingProvider } from "@/hooks/use-booking";
+import { ThemeProvider } from '@/components/theme-provider';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CurvvTech – Digital Solutions & AI",
   description: "Leading provider of AI-powered digital solutions, helping businesses transform their operations with cutting-edge technology.",
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -20,21 +27,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
-        <AuthProvider>
-          <CartProvider>
-            <BookingProvider>
-              <div className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="flex-1">
-                  {children}
-                </main>
-                <Footer />
-              </div>
-            </BookingProvider>
-          </CartProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <CartProvider>
+              <BookingProvider>
+                <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
+                  <Navbar />
+                  <main className="flex-1">
+                    {children}
+                  </main>
+                  <Footer />
+                </div>
+              </BookingProvider>
+            </CartProvider>
+          </AuthProvider>
+        </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

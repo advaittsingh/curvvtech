@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/hooks/use-auth';
 import { useCart } from '@/hooks/use-cart';
-import { ShoppingCart, User, Menu, X, LogOut } from 'lucide-react';
+import { ShoppingCart, User, Menu, X, LogOut, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTheme } from './theme-provider';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const { items } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
 
@@ -23,16 +26,23 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200">
+    <nav className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">C</span>
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/logo.png"
+                  alt="CurvvTech Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="text-xl font-bold text-gray-900">CurvvTech</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">CurvvTech</span>
             </Link>
           </div>
 
@@ -42,7 +52,7 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 {item.name}
               </Link>
@@ -52,7 +62,7 @@ export function Navbar() {
           {/* Right side icons */}
           <div className="flex items-center space-x-4">
             {/* Cart */}
-            <Link href="/cart" className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/cart" className="relative p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               <ShoppingCart className="h-6 w-6" />
               {cartItemCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
@@ -66,30 +76,30 @@ export function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 transition-colors"
+                  className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
                   <img
                     src={user.avatar}
                     alt={user.name}
                     className="w-8 h-8 rounded-full"
                   />
-                  <span className="hidden sm:block text-sm font-medium text-gray-700">
+                  <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-300">
                     {user.name}
                   </span>
                 </button>
 
                 {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 border border-gray-200 dark:border-gray-600">
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Profile
                     </Link>
                     <Link
                       href="/orders"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Orders
@@ -99,7 +109,7 @@ export function Navbar() {
                         logout();
                         setIsMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Sign out
                     </button>
@@ -109,7 +119,7 @@ export function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
+                className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <User className="h-6 w-6" />
                 <span className="hidden sm:block text-sm font-medium">Sign in</span>
@@ -119,9 +129,22 @@ export function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+
+            {/* Dark mode toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5 text-yellow-400" />
+              ) : (
+                <Moon className="h-5 w-5 text-gray-800 dark:text-gray-300" />
+              )}
             </button>
           </div>
         </div>
@@ -129,12 +152,12 @@ export function Navbar() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -143,7 +166,7 @@ export function Navbar() {
               {!user && (
                 <Link
                   href="/login"
-                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign in
