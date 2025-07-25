@@ -2,15 +2,15 @@ import { Users, Target, Award, Globe, TrendingUp, Shield } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">CurvvTech</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">CurvvTech</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We are a team of passionate technologists dedicated to transforming businesses 
               through innovative AI solutions and cutting-edge digital technology.
             </p>
@@ -19,17 +19,17 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-300 mb-6">
                 To democratize artificial intelligence and make cutting-edge technology 
                 accessible to businesses of all sizes. We believe that every organization 
                 deserves the opportunity to leverage AI for growth and innovation.
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-300">
                 Through our comprehensive suite of AI products and professional services, 
                 we empower companies to automate processes, gain valuable insights, and 
                 stay ahead of the competition in an increasingly digital world.
@@ -79,11 +79,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Values</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>
           </div>
@@ -93,8 +93,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovation</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Innovation</h3>
+              <p className="text-gray-300">
                 We constantly push the boundaries of what's possible with AI and technology.
               </p>
             </div>
@@ -103,8 +103,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Collaboration</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Collaboration</h3>
+              <p className="text-gray-300">
                 We believe in the power of teamwork and partnership to achieve great results.
               </p>
             </div>
@@ -113,8 +113,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Trust</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Trust</h3>
+              <p className="text-gray-300">
                 We build lasting relationships based on transparency and reliability.
               </p>
             </div>
@@ -123,8 +123,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Excellence</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Excellence</h3>
+              <p className="text-gray-300">
                 We strive for excellence in every project and deliver the highest quality solutions.
               </p>
             </div>
@@ -133,8 +133,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe className="h-8 w-8 text-yellow-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Global Impact</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Global Impact</h3>
+              <p className="text-gray-300">
                 We work with clients worldwide to create positive change through technology.
               </p>
             </div>
@@ -143,8 +143,8 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Results-Driven</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-white mb-2">Results-Driven</h3>
+              <p className="text-gray-300">
                 We focus on delivering measurable results that drive business growth.
               </p>
             </div>
@@ -153,11 +153,11 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Leadership Team</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Leadership Team</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Meet the experts behind our innovative solutions
             </p>
           </div>
@@ -169,9 +169,9 @@ export default function AboutPage() {
                 alt="CEO"
                 className="w-24 h-24 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Sarah Johnson</h3>
+              <h3 className="text-xl font-semibold text-white mb-1">Sarah Johnson</h3>
               <p className="text-blue-600 font-medium mb-2">CEO & Founder</p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-300 text-sm">
                 Former AI researcher with 15+ years of experience in machine learning and business strategy.
               </p>
             </div>
@@ -182,9 +182,9 @@ export default function AboutPage() {
                 alt="CTO"
                 className="w-24 h-24 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Michael Chen</h3>
+              <h3 className="text-xl font-semibold text-white mb-1">Michael Chen</h3>
               <p className="text-blue-600 font-medium mb-2">CTO</p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-300 text-sm">
                 Technology visionary with expertise in scalable AI systems and cloud architecture.
               </p>
             </div>
@@ -195,9 +195,9 @@ export default function AboutPage() {
                 alt="COO"
                 className="w-24 h-24 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Emily Rodriguez</h3>
+              <h3 className="text-xl font-semibold text-white mb-1">Emily Rodriguez</h3>
               <p className="text-blue-600 font-medium mb-2">COO</p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-300 text-sm">
                 Operations expert focused on delivering exceptional client experiences and team growth.
               </p>
             </div>

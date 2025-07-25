@@ -42,15 +42,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Touch</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Touch</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Ready to transform your business with AI? Let's discuss how we can help 
               you achieve your goals and drive innovation.
             </p>
@@ -63,14 +63,14 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-sm p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+            <div className="bg-gray-800 rounded-lg shadow-sm p-8">
+              <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
               
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">
+                  <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+                  <p className="text-gray-300">
                     Thank you for contacting us. We'll get back to you within 24 hours.
                   </p>
                 </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -86,12 +86,12 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -99,34 +99,34 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="your.email@company.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Company
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => handleInputChange('company', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Your company name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Subject *
                     </label>
                     <select
                       required
                       value={formData.subject}
                       onChange={(e) => handleInputChange('subject', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select a subject</option>
                       <option value="general">General Inquiry</option>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -147,7 +147,7 @@ export default function ContactPage() {
                       rows={6}
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Tell us about your project or inquiry..."
                     />
                   </div>
@@ -176,8 +176,8 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                <p className="text-gray-600 mb-8">
+                <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
+                <p className="text-gray-300 mb-8">
                   Get in touch with our team. We're here to help you transform your business 
                   with cutting-edge AI solutions.
                 </p>
@@ -189,9 +189,9 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@curvvtech.com</p>
-                    <p className="text-gray-600">support@curvvtech.com</p>
+                    <h3 className="font-semibold text-white mb-1">Email</h3>
+                    <p className="text-gray-300">info@curvvtech.com</p>
+                    <p className="text-gray-300">support@curvvtech.com</p>
                   </div>
                 </div>
 
@@ -200,9 +200,9 @@ export default function ContactPage() {
                     <Phone className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">+1 (555) 987-6543</p>
+                    <h3 className="font-semibold text-white mb-1">Phone</h3>
+                    <p className="text-gray-300">+1 (555) 123-4567</p>
+                    <p className="text-gray-300">+1 (555) 987-6543</p>
                   </div>
                 </div>
 
@@ -211,8 +211,8 @@ export default function ContactPage() {
                     <MapPin className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-semibold text-white mb-1">Address</h3>
+                    <p className="text-gray-300">
                       123 Tech Street<br />
                       Silicon Valley, CA 94025<br />
                       United States
@@ -225,10 +225,10 @@ export default function ContactPage() {
                     <Clock className="h-6 w-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM PST</p>
-                    <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM PST</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
+                    <h3 className="font-semibold text-white mb-1">Business Hours</h3>
+                    <p className="text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM PST</p>
+                    <p className="text-gray-300">Saturday: 10:00 AM - 4:00 PM PST</p>
+                    <p className="text-gray-300">Sunday: Closed</p>
                   </div>
                 </div>
               </div>
@@ -250,11 +250,11 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Find answers to common questions about our services and processes
             </p>
           </div>
@@ -262,30 +262,30 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   How quickly can you start a project?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   We typically begin projects within 1-2 weeks of contract signing, 
                   depending on project complexity and current capacity.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   Do you provide ongoing support?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   Yes, we offer comprehensive support packages including maintenance, 
                   updates, and technical assistance for all our solutions.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   What industries do you specialize in?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   We work across various industries including healthcare, finance, 
                   manufacturing, retail, and technology sectors.
                 </p>
@@ -294,30 +294,30 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   Can you work with existing systems?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   Absolutely! We specialize in integrating AI solutions with existing 
                   infrastructure and legacy systems.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   What is your pricing structure?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   Our pricing varies based on project scope and requirements. 
                   We offer both fixed-price and time-and-materials options.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   Do you offer remote consultations?
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   Yes, we provide virtual consultations and can work remotely 
                   with clients worldwide using modern collaboration tools.
                 </p>

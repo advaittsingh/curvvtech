@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { services } from '@/data/services';
 import { useBooking } from '@/hooks/use-booking';
 import { useAuth } from '@/hooks/use-auth';
-import { ArrowLeft, Star, Check, Clock, Calendar, Users, BookOpen } from 'lucide-react';
+import { ArrowLeft, Star, Check, Clock, Calendar, Users, BookOpen, Heart } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 
 export default function ServiceDetailPage() {
@@ -62,12 +62,12 @@ export default function ServiceDetailPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <button
           onClick={() => router.back()}
-          className="flex items-center text-gray-600 hover:text-purple-600 mb-8 transition-colors"
+          className="flex items-center text-gray-300 hover:text-purple-400 mb-8 transition-colors"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Services
@@ -76,7 +76,7 @@ export default function ServiceDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Service Image */}
           <div className="space-y-4">
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div className="bg-gray-800 rounded-lg shadow-sm overflow-hidden">
               <img
                 src={service.image}
                 alt={service.title}
@@ -89,72 +89,77 @@ export default function ServiceDetailPage() {
           <div className="space-y-6">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-purple-900 text-purple-200 px-3 py-1 rounded-full text-sm font-semibold">
                   {service.category}
                 </span>
-                <div className="flex items-center text-yellow-400">
+                <button className="text-gray-400 hover:text-red-500 transition-colors">
+                  <Heart className="h-6 w-6" />
+                </button>
+              </div>
+              <h1 className="text-3xl font-bold text-white mb-2">{service.title}</h1>
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className={`h-5 w-5 ${i < 4 ? 'fill-current' : ''}`} />
                   ))}
-                  <span className="ml-2 text-sm text-gray-500">(4.9) • 89 reviews</span>
                 </div>
+                <span className="ml-2 text-sm text-gray-400">(4.9) • 98 reviews</span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{service.title}</h1>
-              <p className="text-gray-600 text-lg leading-relaxed">{service.description}</p>
+              <p className="text-gray-300 text-lg leading-relaxed">{service.description}</p>
             </div>
 
             {/* Price and Duration */}
-            <div className="border-t border-gray-200 pt-6">
+            <div className="border-t border-gray-700 pt-6">
               <div className="flex items-baseline space-x-2 mb-4">
-                <span className="text-4xl font-bold text-gray-900">{formatPrice(service.price)}</span>
-                <span className="text-gray-500">per project</span>
+                <span className="text-4xl font-bold text-white">{formatPrice(service.price)}</span>
+                <span className="text-gray-400">per project</span>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-400">
                 <Clock className="h-5 w-5 mr-2" />
                 <span>Duration: {service.duration}</span>
               </div>
             </div>
 
-            {/* Features */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">What's Included</h3>
+            {/* What's Included */}
+            <div className="border-t border-gray-700 pt-6">
+              <h3 className="text-lg font-semibold text-white mb-4">What's Included</h3>
               <ul className="space-y-2">
                 {service.features.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Deliverables */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Deliverables</h3>
+            <div className="border-t border-gray-700 pt-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Deliverables</h3>
               <ul className="space-y-2">
                 {service.deliverables.map((deliverable, index) => (
                   <li key={index} className="flex items-center">
                     <div className="w-2 h-2 bg-purple-600 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{deliverable}</span>
+                    <span className="text-gray-300">{deliverable}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Booking Form */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Book This Service</h3>
+            <div className="border-t border-gray-700 pt-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Book This Service</h3>
               
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Preferred Date *
                     </label>
                     <select
                       value={bookingDate}
                       onChange={(e) => setBookingDate(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     >
                       <option value="">Select a date</option>
                       {availableDates.map(date => (
@@ -170,13 +175,13 @@ export default function ServiceDetailPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Preferred Time *
                     </label>
                     <select
                       value={bookingTime}
                       onChange={(e) => setBookingTime(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     >
                       <option value="">Select a time</option>
                       {availableTimes.map(time => (
@@ -189,7 +194,7 @@ export default function ServiceDetailPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
                     Project Requirements
                   </label>
                   <textarea
@@ -197,7 +202,7 @@ export default function ServiceDetailPage() {
                     onChange={(e) => setRequirements(e.target.value)}
                     placeholder="Tell us about your project requirements, goals, and any specific needs..."
                     rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   />
                 </div>
 
@@ -212,14 +217,14 @@ export default function ServiceDetailPage() {
             </div>
 
             {/* Additional Info */}
-            <div className="border-t border-gray-200 pt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-600">
+            <div className="border-t border-gray-700 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-400">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Process</h4>
+                  <h4 className="font-semibold text-white mb-2">Process</h4>
                   <p>Initial consultation → Project planning → Development → Testing → Delivery</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Support</h4>
+                  <h4 className="font-semibold text-white mb-2">Support</h4>
                   <p>Post-delivery support and maintenance included in the service</p>
                 </div>
               </div>

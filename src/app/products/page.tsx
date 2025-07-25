@@ -40,19 +40,19 @@ export default function ProductsPage() {
   }, [searchTerm, selectedCategory, sortBy]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our AI Products</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-white mb-4">Our AI Products</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Discover our cutting-edge AI solutions designed to transform your business operations 
             and drive innovation across industries.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <div className="bg-gray-800 rounded-lg shadow-sm p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Search */}
             <div className="relative">
@@ -62,7 +62,7 @@ export default function ProductsPage() {
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-700 rounded-lg bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
@@ -70,10 +70,10 @@ export default function ProductsPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-700 rounded-lg bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               {categories.map(category => (
-                <option key={category} value={category}>
+                <option key={category} value={category} className="bg-gray-900 text-gray-100">
                   {category === 'all' ? 'All Categories' : category}
                 </option>
               ))}
@@ -83,11 +83,11 @@ export default function ProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-700 rounded-lg bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
-              <option value="name">Sort by Name</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
+              <option value="name" className="bg-gray-900 text-gray-100">Sort by Name</option>
+              <option value="price-low" className="bg-gray-900 text-gray-100">Price: Low to High</option>
+              <option value="price-high" className="bg-gray-900 text-gray-100">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function ProductsPage() {
         )}
 
         {/* Results count */}
-        <div className="mt-8 text-center text-gray-600">
+        <div className="mt-8 text-center text-gray-400">
           Showing {filteredProducts.length} of {products.length} products
         </div>
       </div>
@@ -116,7 +116,7 @@ export default function ProductsPage() {
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+    <div className="bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
       <div className="relative">
         <img
           src={product.image}
@@ -129,8 +129,8 @@ function ProductCard({ product }: { product: Product }) {
       </div>
       
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.title}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
+        <h3 className="text-xl font-semibold text-white mb-2">{product.title}</h3>
+        <p className="text-gray-300 mb-4 line-clamp-2">{product.description}</p>
         
         <div className="flex items-center mb-4">
           <div className="flex text-yellow-400">
@@ -138,11 +138,11 @@ function ProductCard({ product }: { product: Product }) {
               <Star key={i} className={`h-4 w-4 ${i < 4 ? 'fill-current' : ''}`} />
             ))}
           </div>
-          <span className="ml-2 text-sm text-gray-500">(4.8)</span>
+          <span className="ml-2 text-sm text-gray-400">(4.8)</span>
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-gray-900">{formatPrice(product.price)}</span>
+          <span className="text-2xl font-bold text-white">{formatPrice(product.price)}</span>
           <Link
             href={`/products/${product.id}`}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"

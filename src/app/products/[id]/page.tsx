@@ -44,12 +44,12 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <button
           onClick={() => router.back()}
-          className="flex items-center text-gray-600 hover:text-blue-600 mb-8 transition-colors"
+          className="flex items-center text-gray-300 hover:text-blue-400 mb-8 transition-colors"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Products
@@ -58,7 +58,7 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Image */}
           <div className="space-y-4">
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div className="bg-gray-800 rounded-lg shadow-sm overflow-hidden">
               <img
                 src={product.image}
                 alt={product.title}
@@ -71,80 +71,80 @@ export default function ProductDetailPage() {
           <div className="space-y-6">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-blue-900 text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
                   {product.category}
                 </span>
                 <button className="text-gray-400 hover:text-red-500 transition-colors">
                   <Heart className="h-6 w-6" />
                 </button>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.title}</h1>
+              <h1 className="text-3xl font-bold text-white mb-2">{product.title}</h1>
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className={`h-5 w-5 ${i < 4 ? 'fill-current' : ''}`} />
                   ))}
                 </div>
-                <span className="ml-2 text-sm text-gray-500">(4.8) • 127 reviews</span>
+                <span className="ml-2 text-sm text-gray-400">(4.8) • 127 reviews</span>
               </div>
-              <p className="text-gray-600 text-lg leading-relaxed">{product.description}</p>
+              <p className="text-gray-300 text-lg leading-relaxed">{product.description}</p>
             </div>
 
             {/* Price */}
-            <div className="border-t border-gray-200 pt-6">
+            <div className="border-t border-gray-700 pt-6">
               <div className="flex items-baseline space-x-2">
-                <span className="text-4xl font-bold text-gray-900">{formatPrice(product.price)}</span>
+                <span className="text-4xl font-bold text-white">{formatPrice(product.price)}</span>
                 <span className="text-gray-500 line-through">{formatPrice(product.price * 1.2)}</span>
-                <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-semibold">
+                <span className="bg-green-900 text-green-200 px-2 py-1 rounded text-sm font-semibold">
                   Save 17%
                 </span>
               </div>
             </div>
 
             {/* Features */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Features</h3>
+            <div className="border-t border-gray-700 pt-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Key Features</h3>
               <ul className="space-y-2">
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Specifications */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Specifications</h3>
+            <div className="border-t border-gray-700 pt-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Specifications</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {Object.entries(product.specifications).map(([key, value]) => (
-                  <div key={key} className="flex justify-between py-2 border-b border-gray-100">
-                    <span className="text-gray-600">{key}</span>
-                    <span className="font-medium text-gray-900">{value}</span>
+                  <div key={key} className="flex justify-between py-2 border-b border-gray-700">
+                    <span className="text-gray-400">{key}</span>
+                    <span className="font-medium text-white">{value}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Add to Cart */}
-            <div className="border-t border-gray-200 pt-6">
+            <div className="border-t border-gray-700 pt-6">
               <div className="flex items-center space-x-4 mb-4">
-                <label htmlFor="quantity" className="text-sm font-medium text-gray-700">
+                <label htmlFor="quantity" className="text-sm font-medium text-gray-300">
                   Quantity:
                 </label>
                 <select
                   id="quantity"
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="border border-gray-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   {[1, 2, 3, 4, 5].map(num => (
                     <option key={num} value={num}>{num}</option>
                   ))}
                 </select>
                 {currentQuantity > 0 && (
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-400">
                     ({currentQuantity} in cart)
                   </span>
                 )}
@@ -168,15 +168,15 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Additional Info */}
-            <div className="border-t border-gray-200 pt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-600">
+            <div className="border-t border-gray-700 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-400">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Delivery</h4>
+                  <h4 className="font-semibold text-white mb-2">Delivery</h4>
                   <p>Free shipping on orders over $100</p>
                   <p>Estimated delivery: 3-5 business days</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Returns</h4>
+                  <h4 className="font-semibold text-white mb-2">Returns</h4>
                   <p>30-day money-back guarantee</p>
                   <p>Free returns within 30 days</p>
                 </div>
