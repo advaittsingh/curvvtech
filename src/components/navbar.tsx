@@ -16,12 +16,9 @@ export function Navbar() {
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
 
   const navigation = [
-    { name: 'Product', href: '/products' },
-    { name: 'Developers', href: '/services' },
-    { name: 'Solutions', href: '/about' },
-    { name: 'Pricing', href: '/contact' },
-    { name: 'Docs', href: '/contact' },
-    { name: 'Blog', href: '/contact' },
+    { name: 'How it\'s done', href: '/about' },
+    { name: 'Recent concepts', href: '/products' },
+    { name: 'FAQ', href: '/contact' },
   ];
 
   return (
@@ -41,95 +38,31 @@ export function Navbar() {
                   priority
                 />
               </div>
-              <span className="text-xl font-bold text-white">CurvvTech</span>
+              <span className="text-xl font-black text-white">conceptzilla</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
               >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Right side icons */}
+          {/* Right side */}
           <div className="flex items-center space-x-4">
-            {/* Cart */}
-            <Link href="/cart" className="relative p-2 text-gray-300 hover:text-white transition-colors">
-              <ShoppingCart className="h-5 w-5" />
-              {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-emerald-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-                  {cartItemCount}
-                </span>
-              )}
-            </Link>
-
-            {/* User menu */}
-            {user ? (
-              <div className="relative">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-colors"
-                >
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-8 h-8 rounded-full border border-gray-600"
-                  />
-                  <span className="hidden sm:block text-sm font-medium text-gray-300">
-                    {user.name}
-                  </span>
-                </button>
-
-                {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-gray-900 rounded-md shadow-lg py-1 z-50 border border-gray-700">
-                    <Link
-                      href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Profile
-                    </Link>
-                    <Link
-                      href="/orders"
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Orders
-                    </Link>
-                    <button
-                      onClick={() => {
-                        logout();
-                        setIsMenuOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                    >
-                      Sign out
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                href="/login"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
-              >
-                Sign in
-              </Link>
-            )}
-
             {/* CTA Button */}
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center bg-emerald-500 text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-400 transition-colors"
+              className="hidden md:inline-flex items-center bg-white text-black px-6 py-3 font-black text-sm hover:bg-gray-200 transition-colors"
             >
-              Start your project
+              Order Concept→
             </Link>
 
             {/* Mobile menu button */}
@@ -150,27 +83,18 @@ export function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              {!user && (
-                <Link
-                  href="/login"
-                  className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Sign in
-                </Link>
-              )}
               <Link
                 href="/contact"
-                className="block w-full text-center bg-emerald-500 text-black px-4 py-2 rounded-md font-medium text-base hover:bg-emerald-400 transition-colors mt-4"
+                className="block w-full text-center bg-white text-black px-4 py-3 font-black text-base hover:bg-gray-200 transition-colors mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Start your project
+                Order Concept→
               </Link>
             </div>
           </div>
