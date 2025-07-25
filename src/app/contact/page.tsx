@@ -201,8 +201,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Phone</h3>
-                    <p className="text-gray-300">+1 (555) 123-4567</p>
-                    <p className="text-gray-300">+1 (555) 987-6543</p>
+                    <p className="text-gray-300">+91 7305670180</p>
+                    <p className="text-gray-300">+91 9541200124</p>
                   </div>
                 </div>
 
@@ -213,9 +213,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-white mb-1">Address</h3>
                     <p className="text-gray-300">
-                      123 Tech Street<br />
-                      Silicon Valley, CA 94025<br />
-                      United States
+                      260, Sukhdev Vihar<br />
+                      South Delhi, 110025<br />
+                      India
                     </p>
                   </div>
                 </div>
