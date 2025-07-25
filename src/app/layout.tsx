@@ -12,8 +12,8 @@ import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CurvvTech – Digital Solutions & AI",
-  description: "Leading provider of AI-powered digital solutions, helping businesses transform their operations with cutting-edge technology.",
+  title: "CurvvTech – AI Development Platform",
+  description: "The AI development platform. CurvvTech is the powerful, scalable backend that lets you focus on building great, differentiated AI products instead of being stuck building infrastructure.",
   icons: {
     icon: '/logo.png',
     shortcut: '/logo.png',
@@ -33,7 +33,7 @@ export default function RootLayout({
           <AuthProvider>
             <CartProvider>
               <BookingProvider>
-                <div className="min-h-screen flex flex-col bg-gray-900">
+                <div className="min-h-screen flex flex-col bg-black">
                   <Navbar />
                   <main className="flex-1">
                     {children}
